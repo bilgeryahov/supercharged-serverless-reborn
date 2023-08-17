@@ -1,0 +1,21 @@
+{
+    "projectId": "one-time-password-solution-v1",
+    "projectName": "",
+    "functions": [
+        {
+            "$id": "64ddc22d219375064bde",
+            "name": "register",
+            "runtime": "node-18.0",
+            "path": "functions/register",
+            "entrypoint": "src/index.js",
+            "ignore": [
+                "node_modules",
+                ".npm"
+            ],
+            "execute": [],
+            "events": [],
+            "schedule": "",
+            "timeout": 15
+        }
+    ]
+}
