@@ -42,5 +42,6 @@ module.exports = async function (req, res) {
 
   res.json({
     areDevelopersAwesome: true,
+    serviceVersion: '1.0.0'
   });
 };
