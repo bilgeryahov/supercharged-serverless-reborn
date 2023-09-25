@@ -28,17 +28,17 @@ module.exports = async function (req, res) {
       () => database.createDocument(db, collection, userId, {
         'user-secret': secret
       }),
-      (error) => res.json(error, error.code)
+      (error) => res.json(error, error.code || 500)
     )
     .then(
       () => qrcode.toDataURL(otplib.authenticator.keyuri(email, 'appwrite-otp', secret)),
-      (error) => res.json(error, error.code)
+      (error) => res.json(error, error.code || 500)
     )
     .then(
       (response) => res.json({
         message: `${email} successfully registered!`,
         response // the data string to be scanned by an OTP auth app
       }, 201),
-      (error) => res.json(error, error.code)
+      (error) => res.json(error, error.code || 500)
     );
 };
