@@ -36,7 +36,7 @@ module.exports = async function (req, res) {
         userId = response.users[0].$id;
         return database.getDocument(db, collection, userId);
       },
-      (error) => res.json(error, error.code || 400)
+      (error) => res.json(error, error.code || 500)
     )
     .then(
       (response) => {
@@ -45,7 +45,7 @@ module.exports = async function (req, res) {
         }
         return Promise.reject('Unauthorized!');
       },
-      (error) => res.json(error, error.code || 400)
+      (error) => res.json(error, error.code || 500)
     )
     .then(
       () => users.updatePassword(userId, newPw),
@@ -66,12 +66,12 @@ module.exports = async function (req, res) {
           }
         }
       ),
-      (error) => res.json(error, error.code || 400)
+      (error) => res.json(error, error.code || 500)
     )
     .then(
       (response) => res.json({
         headers: response.headers.raw()
       }, 200),
-      (error) => res.json(error, error.code || 400)
+      (error) => res.json(error, error.code || 500)
     );
 };
